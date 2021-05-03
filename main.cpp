@@ -289,7 +289,7 @@ public:
         this->age = Age;
         this->name = Name;
         this->height = new int (Height);
-        this->sex;
+        this->sex = Sex;
     }
 
     ~Person(){
@@ -307,17 +307,29 @@ public:
     }
 
     void printInformation(){
-        cout<<"name : "<< this->name<<" age : "<< this->age<<" height :"<<*height<< " sex : "<< this->sex<<endl;
+        cout<<"name : "<< this->name<<" age : "<< this->age<<" height :"<<*height<< " sex : "<< this->sex<<" teacher "<< Person::teacher<<endl;
     }
 
     void goodFriend(Person &person){
         cout<<person.name <<" is "<< this->name<< "'s good friend!!!"<<endl;
     }
+
+public:
+    static void printTeacher();
 };
+void Person::printTeacher() {
+
+    //静态成员函数只能使用静态成员方法;
+
+    cout<<"the teacher is "<<teacher<<endl;
+
+}
+string Person::teacher="Jack";
 void test1(){
     Person person(23,"Edison",178);
     Person person1(67,"Vince",166);
     Person person_copy(person);
+    person.printTeacher();
     person.goodFriend(person1);
     person.printInformation();
 
